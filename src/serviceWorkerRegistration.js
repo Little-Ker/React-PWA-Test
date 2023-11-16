@@ -135,3 +135,16 @@ export function unregister() {
       });
   }
 }
+
+// 要求 notification 授權
+// default：初使預設值，使用者尚未給予任何權限
+// granted：使用者允許接收到網站的通知
+// denied：使用者拒絕接收網站的通知
+if ('Notification' in window) {
+  console.log('Notification.permission:' + Notification.permission);
+  if (Notification.permission !== 'granted') {
+    Notification.requestPermission(status => {
+      console.log('權限狀態:' + status)
+    });
+  }
+}
