@@ -70,3 +70,14 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+// 監聽 push
+self.addEventListener('push', (event) => {
+  console.log('push', event);
+
+  let title = 'Server Push';
+  let options = {
+    body: 'Push Test',
+    icon: '/pushLogo.png'
+  };
+  event.waitUntil(self.registration.showNotification(title, options));
+});
